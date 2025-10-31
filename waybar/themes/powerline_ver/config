@@ -136,7 +136,7 @@
     "spacing": 10
   },
   "clock": {
-    "format": "󰃭 {:%d-%m-%Y  %H:%M}"
+    "format": "󰃭 {:%A %d-%m-%Y  %H:%M}"
   },
   "cpu": {
     "interval": 15,
@@ -149,7 +149,7 @@
     "max-length": 10
   },
   "custom/launcher": {
-    "format": " ",
+    "format": "SL",
     "on-click": "~/.config/rofi/launchers/type-2/launcher.sh",
     "on-click-right": "killall rofi"
   },
