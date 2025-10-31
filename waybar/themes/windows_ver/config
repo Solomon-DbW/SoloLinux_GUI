@@ -10,9 +10,6 @@
     "modules-left": [
         "custom/os_button",
         "hyprland/workspaces",
-"custom/brave",
- "custom/emacs",
- "custom/kitty"
     ],
     "modules-center": [],
     "modules-right": [
@@ -60,7 +57,7 @@
     },
     "custom/os_button": {
         "format": "",
-        "on-click": "rofi -show drun",
+        "on-click": "~/.config/rofi/launchers/type-2/launcher.sh",
         "tooltip": false
     },
     "cpu": {
