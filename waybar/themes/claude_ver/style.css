@@ -22,7 +22,7 @@ window#waybar {
     background-color: #FF79C6; /* A bright accent color */
     
     /* Ensure the text is readable on the new background */
-    color: #000000;
+    color: #ffffff;
 }
 #workspaces button {
     padding: 0 8px;
