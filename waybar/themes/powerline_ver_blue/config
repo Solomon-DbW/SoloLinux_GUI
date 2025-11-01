@@ -9,7 +9,7 @@
     "custom/separator3",
     "custom/launch_brave",
     "custom/separator4",
-    "custom/launch_virtualbox",
+    "custom/launch_virt_manager",
     "custom/separator5",
     "cpu",
     "custom/separator7",
@@ -17,7 +17,8 @@
     "custom/separator8",
     "disk",
     "custom/separator9",
-    "hyprland/window"
+    "hyprland/window",
+    "custom/separator10"
   ],
   "modules-center": [
   "custom/separator13",
@@ -96,9 +97,9 @@
     "format": "󰖟 ",
     "on-click": "brave"
   },
-  "custom/launch_virtualbox": {
+  "custom/launch_virt_manager": {
     "format": " ",
-    "on-click": "virtualbox"
+    "on-click": "virt-manager"
   },
   "disk": {
     "interval": 20,
@@ -170,6 +171,7 @@
   "custom/separator7": {"format": "\uE0B0"},
   "custom/separator8": {"format": "\uE0B0"},
   "custom/separator9": {"format": "\uE0B0"},
+  "custom/separator10": {"format": "\uE0B0"},
   "custom/separator14": {"format": "\uE0B2"},
   "custom/separator15": {"format": "\uE0B2"},
   "custom/separator16": {"format": "\uE0B2"},
