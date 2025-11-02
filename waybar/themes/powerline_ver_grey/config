@@ -21,11 +21,11 @@
     "custom/separator10"
   ],
   "modules-center": [
-  "custom/separator13",
     "hyprland/workspaces",
-    "custom/separator20"
     ],
   "modules-right": [
+    "custom/separator13",
+    "custom/keybinds_help",
     "custom/separator14",
     "network",
     "custom/separator15",
@@ -52,7 +52,7 @@
   "hyprland/window": {
       "format": "{title}",
       "icon-size": 18,
-      "max-length": 30,
+      "max-length": 80,
       "separate-outputs": true,
       "tooltip": false
   },
@@ -100,6 +100,10 @@
   "custom/launch_virt_manager": {
     "format": " ",
     "on-click": "virt-manager"
+  },
+  "custom/keybinds_help": {
+      "format": "HELP",
+      "on-click": "~/.config/waybar/scripts/cheatsheet.sh"
   },
   "disk": {
     "interval": 20,
@@ -172,11 +176,13 @@
   "custom/separator8": {"format": "\uE0B0"},
   "custom/separator9": {"format": "\uE0B0"},
   "custom/separator10": {"format": "\uE0B0"},
+  "custom/separator13": {"format": "\uE0B2"},
   "custom/separator14": {"format": "\uE0B2"},
   "custom/separator15": {"format": "\uE0B2"},
   "custom/separator16": {"format": "\uE0B2"},
   "custom/separator17": {"format": "\uE0B2"},
   "custom/separator18": {"format": "\uE0B2"},
-  "custom/separator19": {"format": "\uE0B2"}
+  "custom/separator19": {"format": "\uE0B2"},
+  "custom/separator20": {"format": "\uE0B2"}
 }
 
