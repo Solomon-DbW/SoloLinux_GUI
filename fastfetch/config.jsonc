@@ -1,0 +1,53 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+    
+    "display": {
+        "color": {
+            // Key names (OS, Kernel, etc.) will be #660066
+            "keys": "#660066",
+            // --- ADDED THIS LINE ---
+            "values": "#660066" // Sets the color for all module values to #660066
+            // -----------------------
+        }
+    },
+    
+    "logo": {
+        "color": {
+            // Color index 1 is defined as #660066
+            "1": "#660066" 
+        },
+        "type": "file", 
+        "source": "~/.config/fastfetch/ascii.txt"
+    },
+    
+    "modules": [
+        "separator",
+        "os",
+        "host", 
+        "kernel",
+        "uptime",
+        "packages",
+        "shell",
+        "display",
+        "de",
+        "wm",
+        "wmtheme",
+        "theme",
+        "icons",
+        "font",
+        "cursor",
+        "terminal",
+        "terminalfont",
+        "cpu",
+        "gpu",
+        "memory",
+        "swap",
+        "disk",
+        "localip",
+        "battery",
+        "poweradapter",
+        "locale",
+        "break",
+        "colors"
+    ]
+}
