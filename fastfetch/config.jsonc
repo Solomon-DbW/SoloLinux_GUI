@@ -3,11 +3,9 @@
     
     "display": {
         "color": {
-            // Key names (OS, Kernel, etc.) will be #660066
             "keys": "#660066",
-            // --- ADDED THIS LINE ---
-            "values": "#660066" // Sets the color for all module values to #660066
-            // -----------------------
+            "values": "#660066",
+            "title": "#660066"
         }
     },
     
