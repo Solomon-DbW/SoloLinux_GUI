@@ -1,8 +1,8 @@
 NAME="SoloLinux"
-PRETTY_NAME="Soloinux"
+PRETTY_NAME="SoloLinux"
 ID=arch
 BUILD_ID=rolling
-ANSI_COLOR="0;38;2;102;0;102"
+ANSI_COLOR="0;38;2;37;104;151"
 HOME_URL="https://archlinux.org/"
 DOCUMENTATION_URL="https://wiki.archlinux.org/"
 SUPPORT_URL="https://bbs.archlinux.org/"
