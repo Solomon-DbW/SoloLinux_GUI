@@ -351,7 +351,7 @@
     default_icon = dialog-information
 
 [urgency_normal]
-    background = "#660066"
+    background = "#256897"
     foreground = "#ffffff"
     timeout = 10
     override_pause_level = 30
