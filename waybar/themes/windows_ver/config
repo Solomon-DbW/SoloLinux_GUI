@@ -56,7 +56,7 @@
         "on-scroll-down": "hyprctl dispatch workspace r-1"
     },
     "custom/os_button": {
-        "format": "",
+        "format": "SL",
         "on-click": "~/.config/rofi/launchers/type-2/launcher.sh",
         "tooltip": false
     },

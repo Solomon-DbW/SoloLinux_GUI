@@ -124,7 +124,7 @@
         "on-click": "playerctl play-pause"
     },
     "custom/launcher":{
-        "format": " ",
+        "format": "SL",
         "on-click": "~/.config/rofi/launchers/type-2/launcher.sh",
         "on-click-right": "killall rofi"
     },
