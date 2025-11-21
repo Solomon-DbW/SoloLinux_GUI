@@ -7,8 +7,6 @@ The GUI config files of SoloLinux
 
 Below are all wallpapers found in `hypr/wallpapers` along with their filenames.
 
-*(Add your wallpapers to the `hypr/wallpapers` folder and rerender this list.)*
-
 ## Wallpapers
 
 ![](hypr/wallpapers/1968-Lamborghini-Miura-Jota-SVR-001-1080.jpg)
