@@ -1,7 +1,7 @@
 # SoloLinux GUI
 The GUI config files of SoloLinux
 
-<img src="SoloLinux1.png" alt="drawing" width="400"/>
+<img src="SoloLinux_Blue_And_WHite_Text_Dark.png" alt="drawing" width="400"/>
 
 # Wallpapers Preview
 
