@@ -40,6 +40,9 @@ GDK_BACKEND=$BACKEND GTK_THEME="$GTK_THEME_OVERRIDE" yad \
     --column=Command: \
     --timeout-indicator=bottom \
 "ESC" "close tt" "" " = " "SUPER KEY (Windows Key Button)" "(SUPER KEY)" \
+"Prt SC " "Screenshot entire workspace" "(hyprshot -m output)" \
+"SHIFT Prt SC " "Screenshot window" "(hyprshot -m window)" \
+" Prt SC " "Screenshot selected region" "(hyprshot -m region)" \
 " SHIFT K" "Searchable Keybinds" "(Search all Keybinds via rofi)" \
 " SHIFT E" "KooL Hyprland Settings Menu" "" \
 "" "" "" \
@@ -51,8 +54,8 @@ GDK_BACKEND=$BACKEND GTK_THEME="$GTK_THEME_OVERRIDE" yad \
 " Shift Q " "kills an active window" "(kill)" \
 " ALT mouse scroll up/down   " "Desktop Zoom" "Desktop Magnifier" \
 " Alt V" "Clipboard Manager" "(cliphist)" \
-" W" "Cycle wallpaper" "(hyprpaper)" \
-" Shift W" "Choose wallpaper" "(waypaper)" \
+" c" "Cycle wallpaper" "(hyprpaper)" \
+" w" "Choose wallpaper" "(waypaper)" \
 " CTRL ALT B" "Hide/UnHide Waybar" "waybar" \
 " T" "Choose waybar styles" "(waybar styles)" \
 " SHIFT N" "Launch Notification Panel" "swaync Notification Center" \
