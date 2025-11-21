@@ -74,6 +74,10 @@ Below are all wallpapers found in `hypr/wallpapers` along with their filenames.
 ![](hypr/wallpapers/SoloLinux4.png)
 **SoloLinux4.png**
 
+
+![](hypr/wallpapers/SoloLinux_Wallpaper_1.png)
+**SoloLinux_Wallpaper_1.png**
+
 ![](hypr/wallpapers/SoloLinux_Blue_And_WHite_Text_Dark.png)
 **SoloLinux_Blue_And_WHite_Text_Dark.png**
 
