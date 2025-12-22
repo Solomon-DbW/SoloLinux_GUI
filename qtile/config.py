@@ -1,29 +1,3 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -33,7 +7,7 @@ from libqtile.widget.base import ThreadPoolText
 
 
 from custom_volume import pipewire_volume_widget
-import autostart
+from autostart import autostart
 
 # from qtile.unicode_chars import lower_left_triangle
 from unicode_chars import (
@@ -48,9 +22,32 @@ from unicode_chars import (
 mod = "mod4"
 terminal = guess_terminal()
 
+autostart()
+
+colors = {
+    "bg": "#1e1e2e",           # Base background
+    "fg": "#cdd6f4",           # Text
+    "accent1": "#89b4fa",      # Blue
+    "accent2": "#f38ba8",      # Red
+    "accent3": "#a6e3a1",      # Green
+    "accent4": "#f9e2af",      # Yellow
+    "accent5": "#cba6f7",      # Mauve
+    "surface0": "#313244",     # Slightly lighter than bg
+    "surface1": "#45475a",     # Even lighter
+    "surface2": "#585b70",     # Border colors
+}
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
+
+    Key([mod], "s", lazy.spawn(terminal), desc="Launch terminal"),  # Changed from Return to 's'
+    Key([mod], "e", lazy.spawn("emacs --init-directory ~/.config/emacs"), desc="Launch Emacs"),
+    Key([mod], "b", lazy.spawn("brave"), desc="Launch Brave browser"),
+    Key([mod], "v", lazy.spawn("code"), desc="Launch VSCode"),
+    Key([mod], "r", lazy.spawn("rofi -show drun -theme dmenu"), desc="Launch Rofi"),
+
+
     # Brightness down
     Key(
         [],
@@ -75,6 +72,7 @@ keys = [
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    # Key([mod], "rs", lazy.spawn("redshift -O 4000"), desc="Move focus to left"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key(
@@ -126,7 +124,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "r", lazy.spawn("rofi -show drun")),
+    # Key([mod], "r", lazy.spawn("rofi -show drun -theme dmenu")),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -204,84 +202,104 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                # widget.CurrentLayout(),
-                ## Basic Audio Indicator ##
-                # widget.GenPollText(
-                #     update_interval=1,
-                #     func=lambda: subprocess.check_output(
-                #         "wpctl get-volume @DEFAULT_AUDIO_SINK@", shell=True
-                #     )
-                #     .decode("utf-8")
-                #     .strip(),
-                #     name="PipeWireVolume",
-                # ),
-                ## New Audio Indicator ##
                 pipewire_volume_widget,
                 right_arrow("555555", "000000"),
                 widget.CPU(
                     background="555555",
                     format="     {freq_current}GHz CPU Load:{load_percent}%",
                 ),
+
                 right_arrow("000000", "555555"),
+
                 widget.CPUGraph(
                     graph_color="#555555",
                     fill_color="#555555",  # Optional: for the area under the line
                     border_color="#555555",  # Optional: border of the widget
                 ),
+
                 right_arrow("555555", "000000"),
+
                 widget.CheckUpdates(background="555555"),
+
                 right_arrow("000000", "555555"),
+
                 widget.GroupBox(
                     highlight_method="block", this_current_screen_border="#555555"
                 ),
+
+                widget.TextBox(
+                    text="  SoloLinux",
+                    fontsize=14,
+                    foreground=colors["accent1"],
+                    padding=10,
+                ),
+
                 right_arrow("555555", "000000"),
+
+                widget.CapsNumLockIndicator(),
+
+                # widget.CheckUpdates(distro="Arch"),
+
                 widget.WindowName(
                     background="555555",
-                    format="{name:.30}",  # Limits title to 30 characters
+                    # format="{name:.30}",  # Limits title to 30 characters
+                    format="{name}",
                     max_chars=50,  # Optional: max number of characters before cutting off
                     width=300,  # Set a fixed width
                 ),
+
+                widget.CheckUpdates(
+                    distro="Arch",
+                    display_format="Up: {updates}",
+                    no_update_string="Up: 0",
+                    background=colors["surface0"],
+                    colour_have_updates=colors["accent4"],
+                    colour_no_updates=colors["accent3"],
+                    padding=8,
+                ),
+
+                widget.Prompt(
+                 foreground = "0000ff"
+                ),
+
+
                 left_arrow("555555", "000000"),
+
                 widget.Backlight(
-                backlight_name="amdgpu_bl1", # Changed from intel_backlight
-                format="Brightness: {percent:1.0%}",
-                background="000000",
+                    backlight_name="amdgpu_bl1", # Changed from intel_backlight
+                    format="Brightness: {percent:1.0%}",
+                    background="000000",
                 ),
-                # widget.Backlight(
-                #     backlight_name="intel_backlight",
-                #     format="Brightness: {percent:2.0%}",
-                #     background="000000",
-                # ),
+
                 left_arrow("000000", "555555"),
-                # widget.Battery(
-                #     # charge_char="",
-                #     discharge_char="",
-                #     format="  {percent:2.0%} ({hour:d}:{min:02d} left)",
-                #     background="555555",
-                # ),
+
                 widget.Battery(
-                format='{char} {percent:2.0%}',
-                charge_char='⚡',
-                discharge_char='🔋',
-                full_char='✓',
-                update_interval=60,
-                background="555555"
+                    format='{char} {percent:2.0%}',
+                    charge_char='⚡',
+                    discharge_char='🔋',
+                    full_char='✓',
+                    update_interval=60,
+                    background="555555"
                 ),
+
                 left_arrow("555555", "000000"),
+
                 widget.Clock(format="󰃭  %d/%m/%Y | 󱑍  %a %I:%M %p"),
                 left_arrow("000000", "555555"),
+
+                # left_arrow("000000", "555555"),
+                # widget.Bluetooth(),
+                widget.Systray(
+                    padding=8,
+                ),
+
                 widget.HDDBusyGraph(
                     background="555555",
                     graph_color="#000000",
                     fill_color="#555555",  # Optional: for the area under the line
                     border_color="#000000",  # Optional: border of the widget
                 ),
-                # widget.HDDGraph(
-                #     background="555555",q
-                #     graph_color="#000000",
-                #     fill_color="#555555",  # Optional: for the area under the line
-                #     border_color="#000000",  # Optional: border of the widget
-                # ),
+
                 widget.QuickExit(background="555555"),
             ],
             24,
