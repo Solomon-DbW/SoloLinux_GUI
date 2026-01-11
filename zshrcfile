@@ -226,7 +226,6 @@ fi
 
 alias cd="z"
 alias ls="eza --icons=always"
-alias clear="clear && ls"
 # alias figlet='figlet -d ~/.local/share/figlet/'
 
 eval "$(starship init zsh)"
