@@ -1,0 +1,70 @@
+[?1049h[?1h[H[2J[?2004h[?2026$p[?2027$p[?2031$p[?2048$p[?u[c[?12h[?25h[?25l(B[m[H                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                [24;1H(B[m[91mError detected while processing /home/solo/.config/nvim/init.lua:(B[m[K[2;24r[2;1H[22M[r[H                                                                                
+
+[91mFailed to load `plugins.one`(B[m                                                    
+                                                                                
+[91m/home/solo/.config/nvim/lua/plugins/one.lua:1: module 'one' not found:(B[m          
+[91m        no field package.preload['one'](B[m                                         
+[91m        cache_loader: module 'one' not found(B[m                                    
+[91m        cache_loader_lib: module 'one' not found(B[m                                
+[91m        no file './one.lua'(B[m                                                     
+[91m        no file '/usr/share/luajit-2.1/one.lua'(B[m                                 
+[91m        no file '/usr/local/share/lua/5.1/one.lua'(B[m                              
+[91m        no file '/usr/local/share/lua/5.1/one/init.lua'(B[m                         
+[91m        no file '/usr/share/lua/5.1/one.lua'(B[m                                    
+[91m        no file '/usr/share/lua/5.1/one/init.lua'(B[m                               
+[91m        no file './one.so'(B[m                                                      
+[91m        no file '/usr/local/lib/lua/5.1/one.so'(B[m                                 
+[91m        no file '/usr/lib/lua/5.1/one.so'(B[m                                       
+[91m        no file '/usr/local/lib/lua/5.1/loadall.so'(B[m                             
+                                                                                
+[91m# stacktrace:(B[m                                                                   
+[91m  - plugins/one.lua:1 _in_ **mod**(B[m                                              
+[91m  - config/lazy.lua:25(B[m                                                          
+[91m  - ~/.config/nvim/init.lua:1(B[m                                                   
+[96mPress ENTER or type command to continue(B[m                                         [2 q[2 q[H[K
+[91mError detected while processing /home/solo/.config/nvim/init.lua:(B[m[K
+[91mFailed to load `plugins.one`(B[m[K
+[K
+[91m/home/solo/.config/nvim/lua/plugins/one.lua:1: module 'one' not found:(B[m[K
+[91m        no field package.preload['one'](B[m[K
+[91m        cache_loader: module 'one' not found(B[m[K
+[91m        cache_loader_lib: module 'one' not found(B[m[K
+[91m        no file './one.lua'(B[m[K
+[91m        no file '/usr/share/luajit-2.1/one.lua'(B[m[K
+[91m        no file '/usr/local/share/lua/5.1/one.lua'(B[m[K
+[91m        no file '/usr/local/share/lua/5.1/one/init.lua'(B[m[K
+[91m        no file '/usr/share/lua/5.1/one.lua'(B[m[K
+[91m        no file '/usr/share/lua/5.1/one/init.lua'(B[m[K
+[91m        no file './one.so'(B[m[K
+[91m        no file '/usr/local/lib/lua/5.1/one.so'(B[m[K
+[91m        no file '/usr/lib/lua/5.1/one.so'(B[m[K
+[91m        no file '/usr/local/lib/lua/5.1/loadall.so'(B[m[K
+[K
+[91m# stacktrace:(B[m[K
+[91m  - plugins/one.lua:1 _in_ **mod**(B[m[K
+[91m  - config/lazy.lua:25(B[m[K
+[91m  - ~/.config/nvim/init.lua:1(B[m[K
+[96mPress ENTER or type command to continue(B[m[K[?12h[?25h[?25l[?1004h[?12h[?25h

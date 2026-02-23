@@ -14,6 +14,8 @@ return {
                     "query",
                     "elixir",
                     "heex",
+                    "java",
+                    "haskell",
                     "markdown",
                     "javascript",
                     "html",
