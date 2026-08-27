@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
-    
+
     "display": {
         "color": {
             "keys": "#256897",
@@ -8,21 +8,21 @@
             "title": "#256897"
         }
     },
-    
+
     "logo": {
         "color": {
             // Color index 1 is defined as #256897
-            "1": "#256897" 
+            "1": "#256897"
         },
-        "type": "file", 
+        "type": "file",
         "source": "~/.config/fastfetch/ascii.txt"
     },
-    
+
     "modules": [
         "title",
         "separator",
         "os",
-        "host", 
+        "host",
         "kernel",
         "uptime",
         "packages",
@@ -43,6 +43,18 @@
         "swap",
         "disk",
         "localip",
+
+        {
+            "type": "command",
+            "key": "MAC Address",
+            "text": "cat /sys/class/net/wlan0/address"
+        },
+        {
+            "type": "command",
+            "key": "Ethernet MAC",
+            "text": "cat /sys/class/net/eno1/address"
+        },
+
         "battery",
         "poweradapter",
         "locale",
