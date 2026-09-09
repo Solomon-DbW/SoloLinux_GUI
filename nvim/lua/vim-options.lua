@@ -26,3 +26,6 @@ vim.api.nvim_set_keymap("n", "<leader>o", ":OpenInBrave<CR>", { noremap = true, 
 -- Keybinding: Changing tabs with barbar
 vim.keymap.set("n", "<leader>,", ":BufferPrevious<CR>")
 vim.keymap.set("n", "<leader>.", ":BufferNext<CR>")
+
+-- Disable Ctrl-z (suspend) in Normal, Visual, and Insert modes
+vim.keymap.set({ "n", "v", "i" }, "<C-z>", "<Nop>", { noremap = true, silent = true })

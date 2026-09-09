@@ -14,6 +14,7 @@
   - [[#eshell][Eshell]]
 - [[#fonts][FONTS]]
   - [[#setting-font-face][Setting Font Face]]
+  - [[#nerd-icons][NERD-ICONS]]
   - [[#all-the-icons][ALL-THE-ICONS]]
   - [[#zooming-inout][ZOOMING IN/OUT]]
 - [[#gui-adjustments][GUI ADJUSTMENTS]]
@@ -334,13 +335,25 @@ An Emacs shell written in Elisp (Emacs-lisp)
   
 #+end_src
 
+** NERD-ICONS
+#+begin_src emacs-lisp
+  (use-package all-the-icons
+    :ensure t
+    :if (display-graphic-p))
+
+ (use-package nerd-icons
+    :ensure t)
+
+#+end_src
+
+
+
 ** ALL-THE-ICONS
 #+begin_src emacs-lisp
   (use-package all-the-icons
     :ensure t
     :if (display-graphic-p))
 #+end_src
-
 
 ** ZOOMING IN/OUT
 #+begin_src emacs-lisp

@@ -49,6 +49,7 @@ GDK_BACKEND=$BACKEND GTK_THEME="$GTK_THEME_OVERRIDE" yad \
 " S" "Terminal" "(kitty)" \
 " B" "Launch Browser" "(brave)" \
 " R" "Application Launcher" "(rofi-wayland)" \
+"nmtui (in terminal)" "Wi-Fi manager" "(nmtui)" \
 " E" "Open Emacs" "(emacs)" \
 " Q" "close active window" "(not kill)" \
 " Shift Q " "kills an active window" "(kill)" \
