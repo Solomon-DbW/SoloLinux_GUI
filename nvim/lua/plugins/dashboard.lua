@@ -26,15 +26,17 @@ return {
                         key = "f",
                     },
                     {
-                        desc = " Apps",
+                        desc = " Recent files",
                         group = "DiagnosticHint",
-                        action = "Telescope app",
+                        action = "Telescope oldfiles",
                         key = "a",
                     },
                     {
                         desc = " dotfiles",
                         group = "Number",
-                        action = "Telescope dotfiles",
+                        action = function()
+                            require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config"), hidden = true })
+                        end,
                         key = "d",
                     },
                 },

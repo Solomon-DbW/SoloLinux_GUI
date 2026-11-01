@@ -1,5 +1,7 @@
 return {
 	"tanvirtin/monokai.nvim",
+    lazy = false,
+    priority = 1000,
 	config = function()
 		vim.cmd("colorscheme monokai") -- Apply the Monokai color scheme
 		local orange = "#FFC700"

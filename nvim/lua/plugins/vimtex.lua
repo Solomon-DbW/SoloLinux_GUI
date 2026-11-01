@@ -22,7 +22,7 @@ return {
 		vim.g.vimtex_compiler_method = "latexmk"
 
 		-- Local Leader: Setting the local leader for VimTeX mappings to comma (,).
-		vim.g.maplocalleader = ","
+		-- maplocalleader is defined in init.lua.
 
 		-- The following options are generally NOT needed in modern Neovim
 		-- setups using a plugin manager, but they are included here for

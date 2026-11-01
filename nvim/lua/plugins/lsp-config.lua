@@ -1,91 +1,77 @@
 return {
-    {
-        "williamboman/mason.nvim",
-        lazy = false,
-        config = function()
-            require("mason").setup()
-        end,
+    "neovim/nvim-lspconfig",
+    lazy = false,
+    dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "mason-org/mason-lspconfig.nvim",
+        "hrsh7th/cmp-nvim-lsp",
     },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        lazy = false,
-        opts = {
-            auto_install = true,
-        },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        lazy = false,
-        config = function()
-            -- ✅ Correctly require the cmp_nvim_lsp module
-            local cmp_nvim_lsp = require("cmp_nvim_lsp") 
-            
-            local capabilities = vim.tbl_deep_extend(
-                "force",
-                {},
-                vim.lsp.protocol.make_client_capabilities(),
-                cmp_nvim_lsp.default_capabilities()
-            )
-
-            -- Add folding capability (uncommented for completeness if needed)
-            -- capabilities.textDocument.foldingRange = {
-            --    dynamicRegistration = false,
-            --    lineFoldingOnly = true,
-            -- }
-
-            -- ❌ DEPRECATED: local lspconfig = require("lspconfig")
-            -- ✅ MIGRATED: Setup server configs directly using vim.lsp.config
-            
-            -- tailwindcss
-            vim.lsp.config("tailwindcss",{
-                capabilities = capabilities,
-            })
-            
-            -- hls (Haskell)
-            vim.lsp.config("hls", {
-                filetypes = { 'haskell', 'lhaskell' },
-                settings = {
-                    haskell = {
-                        formattingProvider = "ormolu", -- or "fourmolu" / "stylish-haskell"
-                        plugin = {
-                            hlint = { globalOn = true },
-                        },
-                    },
-                },
-            })
-            
-            -- texlab
-            vim.lsp.config("texlab", {})
-            
-            -- lua_ls
-            vim.lsp.config("lua_ls", {
-                capabilities = capabilities,
-            })
-            
-            -- pyright
-            vim.lsp.config("pyright", {
-                capabilities = capabilities,
-            })
-
-            -- --- Diagnostic virtual text setup
-            vim.diagnostic.config({
-                virtual_text = {
-                    prefix = "󱈸", -- change to whatever you like
-                    spacing = 2,
-                },
-                signs = true,
-                underline = true,
-                update_in_insert = false,
-                severity_sort = true,
-            })
-
-            -- --- Keymaps
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP: Show documentation" })
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "LSP: Find references" })
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP: Code action" })
-            vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "LSP: Format document" })
-            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP: Rename symbol" }) -- Uncommented and added description
-        end,
-    },
+    config = function()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        local servers = {
+            tailwindcss = {},
+            hls = {
+                filetypes = { "haskell", "lhaskell" },
+                settings = { haskell = {
+                    formattingProvider = "ormolu",
+                    plugin = { hlint = { globalOn = true } },
+                } },
+            },
+            texlab = {},
+            lua_ls = { settings = { Lua = {
+                diagnostics = { globals = { "vim" } },
+                workspace = { checkThirdParty = false },
+            } } },
+            pyright = {},
+        }
+        local names = {}
+        for name, config in pairs(servers) do
+            config.capabilities = vim.deepcopy(capabilities)
+            vim.lsp.config(name, config)
+            names[#names + 1] = name
+        end
+        -- Configs exist before Mason enables any installed servers.
+        require("mason-lspconfig").setup({
+            ensure_installed = names,
+            -- Java is managed exclusively by ftplugin/java.lua.
+            automatic_enable = { exclude = { "jdtls" } },
+        })
+        -- Also enable these configs for executables installed outside Mason.
+        vim.lsp.enable(names)
+        vim.diagnostic.config({
+            virtual_text = { prefix = "󱈸", spacing = 2 },
+            signs = true, underline = true,
+            update_in_insert = true, severity_sort = true,
+        })
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("SoloLspMappings", { clear = true }),
+            callback = function(args)
+                local function map(lhs, rhs, desc)
+                    vim.keymap.set("n", lhs, rhs, { buffer = args.buf, desc = "LSP: " .. desc })
+                end
+                map("K", vim.lsp.buf.hover, "Documentation")
+                map("<leader>gd", vim.lsp.buf.definition, "Definition")
+                map("<leader>gr", vim.lsp.buf.references, "References")
+                map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+                map("<leader>rn", vim.lsp.buf.rename, "Rename")
+                map("<leader>gf", function()
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+                    local use_null_ls = false
+                    for _, client in ipairs(clients) do
+                        if client.name == "null-ls" and client:supports_method("textDocument/formatting", bufnr) then
+                            use_null_ls = true
+                            break
+                        end
+                    end
+                    vim.lsp.buf.format({
+                        bufnr = bufnr, timeout_ms = 5000,
+                        filter = function(client)
+                            return not use_null_ls or client.name == "null-ls"
+                        end,
+                    })
+                end, "Format document")
+            end,
+        })
+    end,
 }
