@@ -1,0 +1,21 @@
+Hyprland 0.57 migration
+
+Install: back up ~/.config/hypr, then copy this hypr directory over it.
+The active compositor config is now hyprland.lua. Old .conf modules are reference only.
+Do not start Hyprland with --config pointing to hyprland.conf; remove that override.
+Hyprlock and hyprpaper have separate formats; their configs were left unchanged.
+
+Preserved: personal shortcuts, GB keyboard, eDP-1 monitor, blue borders,
+gaps, opacity, animations, startup applications, wallpaper assets and scripts.
+Fixed: invalid Super+ts scratchpad shortcut is now Super+Shift+Space.
+Super+S still opens kitty; Super+Shift+S moves a window to the scratchpad.
+Input focus options now sit under input; cursor environment names are uppercase.
+Avoided starting hyprpaper twice; random_wallpaper.sh starts it.
+Shader is enabled only if its file exists. External app/theme/rofi scripts
+still need to exist at the paths used in your original configuration.
+
+Validation: migrated against the 0.57 Lua template supplied in your archive
+and official documentation. A running Hyprland compositor was unavailable here.
+After installing, run hyprctl reload and then hyprctl configerrors.
+If any errors remain, send their complete output.
+Original generated Lua config is preserved as hyprland.lua.original.
